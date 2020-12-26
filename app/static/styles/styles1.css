@@ -1,0 +1,31 @@
+
+.property_for_sale {
+    padding-bottom: 70px;
+    border-bottom-style: solid;
+    border-width: 1px;
+    width: 50%;
+    padding-top: 10px;
+    margin-left:30px;
+
+
+}   
+
+.address{
+    color:blue;
+    font-weight: bold;
+    float: left;
+}
+
+.price {
+    float:right
+}
+
+.description {
+    color: #122326;
+    padding-top: 5px
+}
+
+.pagination{
+    margin-left:30px;   
+
+}

@@ -2,6 +2,19 @@
 
 {% block content %}
     <h1>Hi, {{ current_user.username }}!</h1>
+    <br> Let's get started </br>
+    
+    <form method='POST'>
+        {{form.hidden_tag()}}
+        <p>
+            {{form.zipcode.label}}
+            {{form.zipcode()}} 
+        </p>
+        <p>
+            {{form.submit()}}  
+        </p>
+    </form>
+    
 
 {% endblock %}
 

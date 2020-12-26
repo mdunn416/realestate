@@ -10,6 +10,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 
+
 #This below is used for forcing users to login before going to a page
 login.login_view = 'login'
 

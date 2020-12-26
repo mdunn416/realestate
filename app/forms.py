@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
 from app.models import User
 
@@ -30,3 +30,11 @@ class RegistrationForm(FlaskForm):
         if user is not None:
             raise ValidationError('Please use a different email address.')
     
+class ZipChoice(FlaskForm):
+    zips = ['77005']
+    zipcode = SelectField(label='Zipcode',choices=zips, validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+
+class DeleteForm(FlaskForm):
+    delete = SubmitField('Delete')

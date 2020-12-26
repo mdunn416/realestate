@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>Results for: {{ zipcode }}!</h1>
+    
+    {% for each in search_results.items %}
+    <div class='property_for_sale'>
+        <div class="address"> {{each.address}} </div>
+        <div class="price"> {{ "${}".format(each.price)}} </div>
+        <br>
+        <div class="description"> {{each.description}} </div>
+        <br>
+        <div class="year"> Year Built: {{each.year}}</div>
+        <div class="building_sqft"> Square Feet: {{each.building_sqft}}</div>
+
+        
+    </div>
+    {% endfor %}
+    <!-- Pagination Links-->
+    <div class="pagination">
+        {% if search_results.page!=1 %}
+        <a href="{{prev_url}}">&laquo</a>
+        {% endif %}
+    <!-- Loop through the number of pages to display a link for each-->
+        {% for page_num in search_results.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+        {% if page_num %}
+            {% if page_num != search_results.page %}
+            <a href="{{ url_for('zipsearch', page=page_num, zipcode=zipcode) }}">{{ page_num }}</a>
+            {% else %}
+            <strong>{{ page_num }}</strong>
+            {% endif %}
+        {% else %}
+        <span class=ellipsis>…</span>
+        {% endif %}
+        {% endfor %}
+
+        {% if search_results.page!=search_results.pages %}
+        <a href="{{next_url}}">&raquo</a>
+        {% endif %}
+    
+        <br><br>
+        Showing page {{ search_results.page }} of {{ search_results.pages }}
+    </div>
+
+{% endblock %}
